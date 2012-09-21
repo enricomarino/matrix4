@@ -1245,7 +1245,7 @@
 
   /**
    * translate_x
-   * Translate matrix on x coordinate.
+   * Translate matrix on x axis.
    * 
    * @param {Float32Array} self destination matrix
    * @param {Array} value translation value
@@ -1257,6 +1257,24 @@
     self[12] += self[ 0] * x;
     self[13] += self[ 1] * x;
     self[14] += self[ 2] * x;
+
+    return self;
+  };
+
+  /**
+   * translate_y
+   * Translate matrix on y axis.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Array} value translation value
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.translate_y = function (self, y) {
+    self[12] += self[ 4] * y;
+    self[13] += self[ 5] * y;
+    self[14] += self[ 6] * y;
 
     return self;
   };
