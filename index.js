@@ -1134,4 +1134,23 @@
     return self;
   };
 
+  /**
+   * scale_x
+   * Scale matrix on x coordinate.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Array} value scale factor
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.scale_x = function (self, value) {
+    self[ 0] *= value;
+    self[ 1] *= value;
+    self[ 2] *= value;
+    self[ 3] *= value;
+
+    return self;
+  };
+
 }(this));
