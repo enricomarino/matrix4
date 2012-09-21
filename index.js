@@ -248,4 +248,39 @@
     return self[i];
   };
 
+  /**
+   * get_value
+   * Get the value at the i-th row, j-th col of the matrix.
+   * 
+   * @param {Float32Array} self matrix
+   * @param {Number} i index of row
+   * @param {Number} j index of col
+   * @return {Number} the value of the matrix 
+   * @api public
+   */
+
+  matrix4.get_value = function (self, i, j) {
+    return self[i + 4*j];
+  };
+
+  /**
+   * get_row
+   * Get the i-th row of the matrix.
+   * 
+   * @param {Float32Array} self matrix
+   * @param {Number} i index of row
+   * @param {Number} values values to set 
+   * @return {Float32Array} the i-th row of the matrix
+   * @api public
+   */
+
+  matrix4.get_row = function (self, i, values) {
+    values[0] = self[row +  0];
+    values[1] = self[row +  4];
+    values[2] = self[row +  8];
+    values[3] = self[row + 12];
+
+    return values;
+  };
+
  }(this));
