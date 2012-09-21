@@ -714,4 +714,41 @@
     return self;
   };
 
+  /**
+   * rotation_z
+   * Get rotation matrix on axis z.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Number} angle rotation angle
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.rotation_z = function (self, angle) {
+    var sin_a = sin(angle);
+    var cos_a = cos(angle);
+
+    self[ 0] = cos_a;
+    self[ 1] = -sin_a;
+    self[ 2] = 0.0;
+    self[ 3] = 0.0;
+
+    self[ 4] = sin_a;
+    self[ 5] = cos_a;
+    self[ 6] = 0.0;
+    self[ 7] = 0.0;
+
+    self[ 8] = 0.0;
+    self[ 9] = 0.0;
+    self[10] = 1.0;
+    self[11] = 0.0;
+
+    self[12] = 0.0;
+    self[13] = 0.0;
+    self[14] = 0.0;
+    self[15] = 1.0;
+
+    return self;
+  };
+
 }(this));
