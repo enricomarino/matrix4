@@ -18,7 +18,7 @@
    * Library version.
    */
 
-  matrix4.version = '0.0.5';
+  matrix4.version = '0.1.0';
 
   /**
    * Math functions.
@@ -28,8 +28,6 @@
   var sin = Math.sin;
   var cos = Math.cos;
   var tan = Math.tan;
-
-  var temp1 = new Float32Array([])
 
   /**
    * create a 4d matrix
@@ -1583,5 +1581,5 @@
 
     return self;
   };
-  
+
 }(this));
