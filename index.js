@@ -1243,6 +1243,22 @@
     return self;
   };
 
-  
+  /**
+   * translate_x
+   * Translate matrix on x coordinate.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Array} value translation value
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.translate_x = function (self, x) {
+    self[12] += self[ 0] * x;
+    self[13] += self[ 1] * x;
+    self[14] += self[ 2] * x;
+
+    return self;
+  };
 
 }(this));
