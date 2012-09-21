@@ -751,4 +751,47 @@
     return self;
   };
 
+  /**
+   * rotation_zyx
+   * Get rotation matrix on axis z, y, x.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Number} angle rotation angle
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.rotation_zyx = function (self, a, b, c) {
+    var sin_a = sin(a);
+    var cos_a = cos(a);
+
+    var sin_b = sin(b);
+    var cos_b = cos(b);
+
+    var sin_c = sin(c);
+    var cos_c = cos(c);
+
+    self[ 0] = cos_c * cos_b;
+    self[ 1] = sin_c * cos_b;
+    self[ 2] = -sin_b;
+    self[ 3] = 0.0;
+
+    self[ 4] = cos_c * sin_b * sin_a - sin_c * cos_a;
+    self[ 5] = cos_c * sin_b * sin_a + cos_c * cos_a;
+    self[ 6] = cos_b * sin_a;
+    self[ 7] = 0.0;
+
+    self[ 8] = cos_c * sin_b * cos_a + sin_c * sin_a;
+    self[ 9] = sin_c * sin_b * cos_a - cos_c * sin_a;
+    self[10] = cos_b * cos_a;
+    self[11] = 0.0;
+
+    self[12] = 0.0;
+    self[13] = 0.0;
+    self[14] = 0.0;
+    self[15] = 1.0;
+
+    return self;
+  };
+
 }(this));
