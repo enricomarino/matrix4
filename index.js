@@ -27,6 +27,7 @@
   var sqrt = Math.sqrt;
   var sin = Math.sin;
   var cos = Math.cos;
+  var tan = Math.tan;
 
   /**
    * create a 4d matrix
@@ -1394,4 +1395,46 @@
     return self;
   };
 
+  /**
+   * perspective
+   * Get the frustum matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Number} fovy field of view
+   * @param {Number} aspect aspect ratio
+   * @param {Number} znear near plane distance
+   * @param {Number} zfar far plane distance
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.perspective = function (self, fovy, aspect, znear, zfar) {
+    var radiant = fovy * PI / 180.0;
+    var f = tan(0.5 * (PI - radiant));
+
+    self[ 0] = f / aspect;
+    self[ 1] = 0.0;
+    self[ 2] = 0.0;
+    self[ 3] = 0.0;
+
+    self[ 4] = 0.0;
+    self[ 5] = f;
+    self[ 6] = 0.0;
+    self[ 7] = 0.0;
+
+    self[ 8] = 0.0;
+    self[ 9] = 0.0;
+    self[10] = (zfar + znear) / (znear - zfar);
+    self[11] = -1;
+
+    self[12] = 0.0;
+    self[13] = 0.0;
+    self[14] = (2 * zfar * znear) / (znear - zfar);
+    self[15] = 0.0;
+
+    return self;
+  };
+
+
+  
 }(this));
