@@ -1330,5 +1330,30 @@
 
     return self;
   };
-  
+
+  /**
+   * transpose
+   * Transpose matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Float32Array} self source matrix
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.transpose = function (self) {
+    var temp;
+
+    temp = self[ 1]; self[ 1] = self[ 4]; self[ 4] = temp;
+    temp = self[ 2]; self[ 2] = self[ 8]; self[ 8] = temp;
+    temp = self[ 3]; self[ 3] = self[12]; self[12] = temp;
+
+    temp = self[ 6]; self[ 6] = self[ 9]; self[ 9] = temp;
+    temp = self[ 7]; self[ 7] = self[13]; self[13] = temp;
+
+    temp = self[11]; self[11] = self[14]; self[14] = temp;
+
+    return self;
+  };
+
 }(this));
