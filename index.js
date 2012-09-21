@@ -1478,7 +1478,7 @@
 
   /**
    * lookat
-   * Get the lookat matrix.
+   * Get the look at matrix.
    * 
    * @param {Float32Array} self destination matrix
    * @param {Float32Array} eye camera position
@@ -1488,7 +1488,7 @@
    * @api public
    */
 
-  matrix4.lookat = function (self, eye, center, up) {
+  matrix4.look_at = function (self, eye, center, up) {
     var normalize = function (vec) {
       var x = vec[0];
       var y = vec[1];
@@ -1546,5 +1546,42 @@
     return self;
   };
 
+  /**
+   * view
+   * Get the look at matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Float32Array} m model matrix
+   * @return {Float32Array} matrix
+   * @api public
+   */
 
+  matrix4.view = function (self, m) {
+    var x = -self[12];
+    var y = -self[13];
+    var z = -self[14];
+
+    self[ 0] = m[ 0];
+    self[ 1] = m[ 4];
+    self[ 2] = -m[ 8];
+    self[ 3] = 0.0;
+
+    self[ 4] = m[ 1];
+    self[ 5] = m[ 5];
+    self[ 6] = -m[ 9];
+    self[ 7] = 0.0;
+
+    self[ 8] = m[ 2];
+    self[ 9] = m[ 6];
+    self[10] = -m[10];
+    self[11] = 0.0;
+
+    self[12] = self[ 0] * x + self[ 4] * y + self[ 8] * z;
+    self[13] = self[ 1] * x + self[ 5] * y + self[ 9] * z;
+    self[14] = self[ 2] * x + self[ 6] * y + self[10] * z;
+    self[15] = 1.0;
+
+    return self;
+  };
+  
 }(this));
