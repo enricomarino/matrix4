@@ -1004,4 +1004,71 @@
     return self;
   };
 
+  /**
+   * rotate_zyx
+   * Rotate matrix on axis z, y, x
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Number} angle rotation angle on z axis
+   * @param {Number} angle rotation angle on y axis
+   * @param {Number} angle rotation angle on x axis
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.rotate_zyx = function (self, a, b, c) {
+    var sin_a = sin(a);
+    var cos_a = cos(a);
+
+    var sin_b = sin(b);
+    var cos_b = cos(b);
+
+    var sin_c = sin(c);
+    var cos_c = cos(c);
+
+    var r00 = cos_c * cos_b;
+    var r10 = sin_c * cos_b;
+    var r20 = -sin_b;
+
+    var r01 = cos_c * sin_b * sin_a - sin_c * cos_a;
+    var r11 = cos_c * sin_b * sin_a + cos_c * cos_a;
+    var r21 = cos_b * sin_a;
+
+    var r02 = cos_c * sin_b * cos_a + sin_c * sin_a;
+    var r12 = sin_c * sin_b * cos_a - cos_c * sin_a;
+    var r22 = cos_b * cos_a;
+
+    var m00 = self[ 0];
+    var m10 = self[ 1];
+    var m20 = self[ 2];
+    var m20 = self[ 3];
+
+    var m01 = self[ 4];
+    var m11 = self[ 5];
+    var m21 = self[ 6];
+    var m21 = self[ 7];
+
+    var m02 = self[ 8];
+    var m12 = self[ 9];
+    var m22 = self[10];
+    var m22 = self[11];
+
+    self[ 0] = r00 * m00 + r10 * m01 + r20 * m02;
+    self[ 1] = r00 * m10 + r10 * m11 + r20 * m12;
+    self[ 2] = r00 * m20 + r10 * m21 + r20 * m22;
+    self[ 3] = r00 * m30 + r10 * m31 + r20 * m32;
+
+    self[ 4] = r01 * m00 + r11 * m01 + r21 * m02;
+    self[ 5] = r01 * m10 + r11 * m11 + r21 * m12;
+    self[ 6] = r01 * m20 + r11 * m21 + r21 * m22;
+    self[ 7] = r01 * m30 + r11 * m31 + r21 * m32;
+
+    self[ 8] = r02 * m00 + r12 * m01 + r22 * m02;
+    self[ 9] = r02 * m10 + r12 * m11 + r22 * m12;
+    self[10] = r02 * m20 + r12 * m21 + r22 * m22;
+    self[11] = r02 * m30 + r12 * m31 + r22 * m32;
+
+    return self;
+  };
+
 }(this));
