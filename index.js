@@ -1279,4 +1279,22 @@
     return self;
   };
 
+  /**
+   * translate_z
+   * Translate matrix on z axis.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Array} value translation value
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.translate_z = function (self, z) {
+    self[12] += self[ 8] * z;
+    self[13] += self[ 9] * z;
+    self[14] += self[10] * z;
+
+    return self;
+  };
+
 }(this));
