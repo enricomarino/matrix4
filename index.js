@@ -1172,4 +1172,23 @@
     return self;
   };
 
+  /**
+   * scale_z
+   * Scale matrix on z axis.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Array} value scale factor
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.scale_z = function (self, value) {
+    self[ 8] *= value;
+    self[ 9] *= value;
+    self[10] *= value;
+    self[11] *= value;
+
+    return self;
+  };
+  
 }(this));
