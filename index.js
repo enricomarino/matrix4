@@ -168,5 +168,24 @@
     return self;
   };
 
+  /**
+   * set_row
+   * Set the i-th row of the matrix.
+   * 
+   * @param {Float32Array} self matrix
+   * @param {Number} i index of row
+   * @param {Number} values values to set 
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  mat4.set_row = function (self, i, values) {
+    self[i +  0] = values[0];
+    self[i +  4] = values[1];
+    self[i +  8] = values[2];
+    self[i + 12] = values[3];
+
+    return self;
+  };  
 
  }(this));
