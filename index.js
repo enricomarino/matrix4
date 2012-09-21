@@ -179,7 +179,7 @@
    * @api public
    */
 
-  mat4.set_row = function (self, i, values) {
+  matrix4.set_row = function (self, i, values) {
     self[i +  0] = values[0];
     self[i +  4] = values[1];
     self[i +  8] = values[2];
@@ -187,5 +187,51 @@
 
     return self;
   };  
+
+  /**
+   * set_col
+   * Set the j-th col of the matrix.
+   * 
+   * @param {Float32Array} self matrix
+   * @param {Number} j index of col
+   * @param {Number} values values to set 
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.set_col = function (self, j, values) {
+    self[0 + 4*j] = values[0];
+    self[1 + 4*j] = values[1];
+    self[2 + 4*j] = values[2];
+    self[3 + 4*j] = values[3];
+
+    return self;
+  };
+
+  /**
+   * set_upper3
+   * Set the upper 3x3 matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Float32Array} m source matrix
+   * @return {Float32Array} destination matrix
+   * @api public
+   */
+
+  matrix4.set_upper3 = function (self, m) {
+    self[0] = m[ 0];
+    self[1] = m[ 1];
+    self[2] = m[ 2];
+
+    self[3] = m[ 4];
+    self[4] = m[ 5];
+    self[5] = m[ 6];
+
+    self[6] = m[ 8];
+    self[7] = m[ 9];
+    self[8] = m[10];
+
+    return self;
+  };
 
  }(this));
