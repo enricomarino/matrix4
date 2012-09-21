@@ -1105,4 +1105,33 @@
     return self;
   };
 
+  /**
+   * scale
+   * Scale matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Array} v scale factors
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.scale = function (self, v) {
+    self[ 0] *= v[0];
+    self[ 1] *= v[0];
+    self[ 2] *= v[0];
+    self[ 3] *= v[0];
+
+    self[ 4] *= v[1];
+    self[ 5] *= v[1];
+    self[ 6] *= v[1];
+    self[ 7] *= v[1];
+
+    self[ 8] *= v[2];
+    self[ 9] *= v[2];
+    self[10] *= v[2];
+    self[11] *= v[2];
+
+    return self;
+  };
+
 }(this));
