@@ -1356,4 +1356,42 @@
     return self;
   };
 
+  /**
+   * frustum
+   * Get the frustum matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Number} left left plane distance
+   * @param {Number} right right plane distance
+   * @param {Number} bottom bottom plane distance
+   * @param {Number} top top plane distance
+   * @param {Number} zfar far plane distance
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.frustum = function (self, left, right, bottom, top, znear, zfar) {
+    self[ 0] = (2 * znear) / (right - left);
+    self[ 1] = 0.0;
+    self[ 2] = 0.0;
+    self[ 3] = 0.0;
+
+    self[ 4] = 0.0;
+    self[ 5] = (2 * znear) / (top - bottom);
+    self[ 6] = 0.0;
+    self[ 7] = 0.0;
+
+    self[ 8] = (right + left) / (right - left);
+    self[ 9] = (top + bottom) / (top - bottom);
+    self[10] = (zfar + znear) / (znear - zfar);
+    self[11] = -1.0;
+
+    self[12] = 0.0;
+    self[13] = 0.0;
+    self[14] = (2 * zfar * znear) / (znear - zfar);
+    self[15] = 0.0;
+
+    return self;
+  };
+
 }(this));
