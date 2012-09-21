@@ -1435,6 +1435,43 @@
     return self;
   };
 
+  /**
+   * ortho
+   * Get the frustum matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Number} left left plane distance
+   * @param {Number} right right plane distance
+   * @param {Number} bottom bottom plane distance
+   * @param {Number} top top plane distance
+   * @param {Number} znear z near plane distance
+   * @param {Number} zfar z far plane distance
+   * @return {Float32Array} matrix
+   * @api public
+   */
 
-  
+  matrix4.ortho = function (self, left, right, bottom, top, znear, zfar) {
+    self[ 0] = 2.0 / (right - left);
+    self[ 1] = 0.0;
+    self[ 2] = 0.0;
+    self[ 3] = 0.0;
+
+    self[ 4] = 0.0;
+    self[ 5] = 2.0 / (top - bottom);
+    self[ 6] = 0.0;
+    self[ 7] = 0.0;
+
+    self[ 8] = 0.0;
+    self[ 9] = 0.0;
+    self[10] = 2.0 / (znear - zfar);
+    self[11] = 0.0;
+
+    self[12] = (right + left) / (left - right);
+    self[13] = (top + bottom) / (bottom - top);
+    self[14] = (zfar + znear) / (znear - zfar);
+    self[15] = 0.0;
+
+    return self;
+  };
+
 }(this));
