@@ -283,4 +283,24 @@
     return values;
   };
 
- }(this));
+  /**
+   * get_row
+   * Get the j-th col of the matrix.
+   * 
+   * @param {Float32Array} self matrix
+   * @param {Number} j index of col
+   * @param {Number} values values to set 
+   * @return {Float32Array} the i-th row of the matrix
+   * @api public
+   */
+
+  matrix4.get_col = function (self, j, values) {
+    values[0] = self[    4*col];
+    values[1] = self[1 + 4*col];
+    values[2] = self[2 + 4*col];
+    values[3] = self[3 + 4*col];
+
+    return values;
+  };
+
+}(this));
