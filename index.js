@@ -1071,4 +1071,38 @@
     return self;
   };
 
+  /**
+   * scaling
+   * Get scaling matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Array} v scale factors
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.scaling = function (self, v) {
+    self[ 0] = v[0];
+    self[ 1] = 0.0;
+    self[ 2] = 0.0;
+    self[ 3] = 0.0;
+
+    self[ 4] = 0.0;
+    self[ 5] = v[1];
+    self[ 6] = 0.0;
+    self[ 7] = 0.0;
+
+    self[ 8] = 0.0;
+    self[ 9] = 0.0;
+    self[10] = v[2];
+    self[11] = 0.0;
+
+    self[12] = 0.0;
+    self[13] = 0.0;
+    self[14] = 0.0;
+    self[15] = 1.0;
+
+    return self;
+  };
+
 }(this));
