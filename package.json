@@ -6,7 +6,7 @@
   },
   "name": "matrix4",
   "description": "JavaScript math library for 4d matrix",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/onirame/matrix4",
   "repository": {
     "type": "git",
