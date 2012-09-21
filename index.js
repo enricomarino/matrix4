@@ -893,5 +893,42 @@
     return self;
   };
 
+  /**
+   * rotate_x
+   * Rotate matrix on axis x.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Number} angle rotation angle
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.rotate_x = function (self, angle) {
+    var sin_a = sin(angle);
+    var cos_a = cos(angle);
+
+    var m01 = self[ 4];
+    var m11 = self[ 5];
+    var m21 = self[ 6];
+    var m31 = self[ 7];
+
+    var m02 = self[ 8];
+    var m12 = self[ 9];
+    var m22 = self[10];
+    var m32 = self[11];
+
+    self[ 4] = cos_a * m01 + sin_a * m02;
+    self[ 5] = cos_a * m11 + sin_a * m12;
+    self[ 6] = cos_a * m21 + sin_a * m22;
+    self[ 7] = cos_a * m31 + sin_a * m32;
+
+    self[ 8] = cos_a * m02 - sin_a * m01;
+    self[ 9] = cos_a * m12 - sin_a * m11;
+    self[10] = cos_a * m22 - sin_a * m21;
+    self[11] = cos_a * m32 - sin_a * m31;
+
+    return self;
+  };
+
 
 }(this));
