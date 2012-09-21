@@ -1136,7 +1136,7 @@
 
   /**
    * scale_x
-   * Scale matrix on x coordinate.
+   * Scale matrix on x axis.
    * 
    * @param {Float32Array} self destination matrix
    * @param {Array} value scale factor
@@ -1149,6 +1149,25 @@
     self[ 1] *= value;
     self[ 2] *= value;
     self[ 3] *= value;
+
+    return self;
+  };
+
+  /**
+   * scale_y
+   * Scale matrix on y axis.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Array} value scale factor
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.scale_y = function (self, value) {
+    self[ 4] *= value;
+    self[ 5] *= value;
+    self[ 6] *= value;
+    self[ 7] *= value;
 
     return self;
   };
