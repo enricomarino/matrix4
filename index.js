@@ -21,6 +21,14 @@
   matrix4.version = '0.0.5';
 
   /**
+   * Math functions.
+   */
+
+  var sqrt = Math.sqrt;
+  var sin = Math.sin;
+  var cos = Math.cos;
+
+  /**
    * create a 4d matrix
    * @param {Float32Array | Array} values matrix values
    * @return {Float32Array} a 4d matrix
@@ -502,6 +510,134 @@
     return self;
   };
 
-  
+  /**
+   * mul
+   * Multiply matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Float32Array} m matrix to add
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.mul = function (self, m) {
+    var m00 = self[ 0];
+    var m10 = self[ 1];
+    var m20 = self[ 2];
+    var m30 = self[ 3];
+
+    var m01 = self[ 4];
+    var m11 = self[ 5];
+    var m21 = self[ 6];
+    var m31 = self[ 7];
+
+    var m02 = self[ 8];
+    var m12 = self[ 9];
+    var m22 = self[10];
+    var m32 = self[11];
+
+    var m03 = self[12];
+    var m13 = self[13];
+    var m23 = self[14];
+    var m33 = self[15];
+
+    self[ 0] = m00 * m[ 0] + m01 * b[ 1] + m02 * b[ 2] + m03 * b[ 3];
+    self[ 1] = m10 * m[ 0] + m11 * b[ 1] + m12 * b[ 2] + m13 * b[ 3];
+    self[ 2] = m20 * m[ 0] + m21 * b[ 1] + m22 * b[ 2] + m23 * b[ 3];
+    self[ 3] = m30 * m[ 0] + m31 * b[ 1] + m32 * b[ 2] + m33 * b[ 3];
+
+    self[ 4] = m00 * m[ 4] + m01 * b[ 5] + m02 * b[ 6] + m03 * b[ 7];
+    self[ 5] = m10 * m[ 4] + m11 * b[ 5] + m12 * b[ 6] + m13 * b[ 7];
+    self[ 6] = m20 * m[ 4] + m21 * b[ 5] + m22 * b[ 6] + m23 * b[ 7];
+    self[ 7] = m30 * m[ 4] + m31 * b[ 5] + m32 * b[ 6] + m33 * b[ 7];
+
+    self[ 8] = m00 * m[ 8] + m01 * b[ 9] + m02 * b[10] + m03 * b[11];
+    self[ 9] = m10 * m[ 8] + m11 * b[ 9] + m12 * b[10] + m13 * b[11];
+    self[10] = m20 * m[ 8] + m21 * b[ 9] + m22 * b[10] + m23 * b[11];
+    self[11] = m30 * m[ 8] + m31 * b[ 9] + m32 * b[10] + m33 * b[11];
+
+    self[12] = m00 * m[12] + m01 * b[13] + m02 * b[14] + m03 * b[15];
+    self[13] = m10 * m[12] + m11 * b[13] + m12 * b[14] + m13 * b[15];
+    self[14] = m20 * m[12] + m21 * b[13] + m22 * b[14] + m23 * b[15];
+    self[15] = m30 * m[12] + m31 * b[13] + m32 * b[14] + m33 * b[15];
+
+    return self;
+  };
+
+  /**
+   * rotation
+   * Get rotation matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Number} angle rotation angle
+   * @param {Float32Array} axis rotation axis
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.rotation = function (self, angle, axis) {
+    var x = axis[0];
+    var y = axis[1];
+    var z = axis[2];
+    var w = sqrt(x*x + y*y + z*z)
+    var sin_a;
+    var cos_a;
+    var one_minus_cos;
+
+    if (w == 0.0) {
+      self[ 0] = 1.0;
+      self[ 1] = 0.0;
+      self[ 2] = 0.0;
+      self[ 3] = 0.0;
+
+      self[ 4] = 0.0;
+      self[ 5] = 1.0;
+      self[ 6] = 0.0;
+      self[ 7] = 0.0;
+
+      self[ 8] = 0.0;
+      self[ 9] = 0.0;
+      self[10] = 1.0;
+      self[11] = 0.0;
+
+      self[12] = 0.0;
+      self[13] = 0.0;
+      self[14] = 0.0;
+      self[15] = 1.0;
+
+      return self;
+    }
+
+    w = 1/w;
+    x *= w;
+    y *= w;
+    z *= w;
+
+    sin_a = sin(angle);
+    cos_a = cos(angle);
+    one_minus_cos = 1.0 - cos_a;
+
+    self[ 0] = x * x * one_minus_cos + 1 * cos_a;
+    self[ 1] = y * x * one_minus_cos + z * sin_a;
+    self[ 2] = z * x * one_minus_cos - y * sin_a;
+    self[ 3] = 0.0;
+
+    self[ 4] = x * y * one_minus_cos - z * sin_a;
+    self[ 5] = y * y * one_minus_cos + 1 * cos_a;
+    self[ 6] = y * z * one_minus_cos + x * sin_a;
+    self[ 7] = 0.0;
+
+    self[ 8] = x * z * one_minus_cos + y * sin_a;
+    self[ 9] = y * z * one_minus_cos - x * sin_a;
+    self[10] = z * z * one_minus_cos + 1 * cos_a;
+    self[11] = 0.0;
+
+    self[12] = 0.0;
+    self[13] = 0.0;
+    self[14] = 0.0;
+    self[15] = 1.0;
+
+    return self;
+  };
 
 }(this));
