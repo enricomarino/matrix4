@@ -1225,4 +1225,24 @@
     return self;
   };
 
+  /**
+   * translate
+   * Translate matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Array} v translation vector
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.translate = function (self, v) {
+    self[12] += self[ 0] * v[0] + self[ 4] * v[1] + self[ 8] * v[2];
+    self[13] += self[ 1] * v[0] + self[ 5] * v[1] + self[ 9] * v[2];
+    self[14] += self[ 2] * v[0] + self[ 6] * v[1] + self[10] * v[2];
+
+    return self;
+  };
+
+  
+
 }(this));
