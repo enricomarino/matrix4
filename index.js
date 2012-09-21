@@ -284,7 +284,7 @@
   };
 
   /**
-   * get_row
+   * get_col
    * Get the j-th col of the matrix.
    * 
    * @param {Float32Array} self matrix
@@ -301,6 +301,32 @@
     values[3] = self[3 + 4*col];
 
     return values;
+  };
+
+  /**
+   * get_upper3
+   * Get the upper 3x3 matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Float32Array} m source matrix
+   * @return {Float32Array} destination matrix
+   * @api public
+   */
+
+  matrix4.get_upper3 = function (self, m) {
+    m[0] = self[ 0];
+    m[1] = self[ 1];
+    m[2] = self[ 2];
+
+    m[3] = self[ 4];
+    m[4] = self[ 5];
+    m[5] = self[ 6];
+
+    m[6] = self[ 8];
+    m[7] = self[ 9];
+    m[8] = self[10];
+
+    return m;
   };
 
 }(this));
