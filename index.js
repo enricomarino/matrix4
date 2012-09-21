@@ -29,6 +29,8 @@
   var cos = Math.cos;
   var tan = Math.tan;
 
+  var temp1 = new Float32Array([])
+
   /**
    * create a 4d matrix
    * @param {Float32Array | Array} values matrix values
@@ -1473,5 +1475,76 @@
 
     return self;
   };
+
+  /**
+   * lookat
+   * Get the lookat matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Float32Array} eye camera position
+   * @param {Float32Array} center target position
+   * @param {Float32Array} up up vector
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.lookat = function (self, eye, center, up) {
+    var normalize = function (vec) {
+      var x = vec[0];
+      var y = vec[1];
+      var z = vec[2];
+      var w = 1.0 / sqrt(x*x + y*y + z*z);
+
+      vec[0] *= w;
+      vec[1] *= w;
+      vec[2] *= w;
+
+      return vec;
+    };
+    var cross = function (vec, a, b) {
+      vec[0] = a[1] * b[2] - a[2] * b[1];
+      vec[1] = a[2] * b[0] - a[0] * b[2];
+      vec[2] = a[0] * b[1] - a[1] * b[0];
+
+      return vec;
+    };
+    var forward = [0.0, 0.0, 0.0];
+    var right = [0.0, 0.0, 0.0];
+    var x = -eye[0];
+    var y = -eye[1];
+    var z = -eye[2];
+
+    forward[0] = center[0] - eye[0];
+    forward[1] = center[1] - eye[1];
+    forward[2] = center[2] - eye[2];
+
+    normalize(forward);
+    normalize(up);
+    normalize(cross(right, forward, up));
+    normalize(cross(up, right, forward));
+
+    self[ 0] = right[0];
+    self[ 1] = up[0];
+    self[ 2] = -forward[0];
+    self[ 3] = 0.0;
+
+    self[ 4] = right[1];
+    self[ 5] = up[1];
+    self[ 6] = -forward[1];
+    self[ 7] = 0.0;
+
+    self[ 8] = right[2];
+    self[ 9] = up[2];
+    self[10] = -forward[2];
+    self[11] = 0.0;
+
+    self[12] = self[ 0] * x + self[ 4] * y + self[ 8] * z;
+    self[13] = self[ 1] * x + self[ 5] * y + self[ 9] * z;
+    self[14] = self[ 2] * x + self[ 6] * y + self[10] * z;
+    self[15] = 1.0;
+
+    return self;
+  };
+
 
 }(this));
