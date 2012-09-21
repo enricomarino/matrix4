@@ -756,7 +756,9 @@
    * Get rotation matrix on axis z, y, x.
    * 
    * @param {Float32Array} self destination matrix
-   * @param {Number} angle rotation angle
+   * @param {Number} angle rotation angle on axiz z
+   * @param {Number} angle rotation angle on axiz y
+   * @param {Number} angle rotation angle on axiz x
    * @return {Float32Array} matrix
    * @api public
    */
