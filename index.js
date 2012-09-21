@@ -468,4 +468,40 @@
     return self;
   };
 
+  /**
+   * sub
+   * Subtract matrix.
+   * 
+   * @param {Float32Array} self destination matrix
+   * @param {Float32Array} m matrix to add
+   * @return {Float32Array} matrix
+   * @api public
+   */
+
+  matrix4.sub = function (self, m) {
+    self[ 0] -= m[ 0];
+    self[ 1] -= m[ 1];
+    self[ 2] -= m[ 2];
+    self[ 3] -= m[ 3];
+
+    self[ 4] -= m[ 4];
+    self[ 5] -= m[ 5];
+    self[ 6] -= m[ 6];
+    self[ 7] -= m[ 7];
+
+    self[ 8] -= m[ 8];
+    self[ 9] -= m[ 9];
+    self[10] -= m[10];
+    self[11] -= m[11];
+
+    self[12] -= m[12];
+    self[13] -= m[13];
+    self[14] -= m[14];
+    self[15] -= m[15];
+
+    return self;
+  };
+
+  
+
 }(this));
