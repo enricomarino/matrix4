@@ -1,6 +1,6 @@
 # matrix4
 
-JavaScript math library for 4d matrix
+JavaScript 4d matrix library
 
 ## Installation
 
@@ -10,7 +10,7 @@ JavaScript math library for 4d matrix
 
 (The MIT License)
 
-Copyright (c) 2012 Enrico Marino (http://onirame.no.de)
+Copyright (c) 2012 Enrico Marino
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

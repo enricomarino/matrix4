@@ -1,12 +1,21 @@
 {
+  "name": "matrix4",
+  "description": "JavaScript 4d matrix library",
+  "version": "0.1.1",
   "author": {
     "name": "Enrico Marino",
-    "email": "enrico.marino@email.com",
-    "site": "http://onirame.no.de"
+    "email": "enrico.marino@email.com"
   },
-  "name": "matrix4",
-  "description": "JavaScript math library for 4d matrix",
-  "version": "0.1.0",
+  "maintainers": [
+    {
+      "name": "Enrico Marino",
+      "email": "enrico.marino@email.com"
+    },
+    {
+      "name": "Federico Spini",
+      "email": "federico.spini@gmail.com"
+    }
+  ],
   "homepage": "https://github.com/onirame/matrix4",
   "repository": {
     "type": "git",
