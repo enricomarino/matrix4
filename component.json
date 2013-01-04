@@ -1,0 +1,14 @@
+{
+  "name": "matrix4",
+  "repo": "component-math/matrix4",
+  "version": "0.2.0",
+  "description": "JavaScript 4d matrix library",
+  "keywords": ["math", "matrix", "4d"],
+  "scripts": ["index.js"],
+  "dependencies": {
+  },
+  "development": {
+    "component/assert": "*"
+  },
+  "license": "MIT"
+}
