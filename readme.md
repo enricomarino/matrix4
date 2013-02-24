@@ -1,10 +1,10 @@
 # matrix4
 
-JavaScript 4d matrix library
+Matrix 4D library
 
 ## Installation
 
-    $ component install component-math/matrix4
+    $ component install enricomarino/matrix4
 
 ## License
 
