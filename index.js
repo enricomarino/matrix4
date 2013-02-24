@@ -1,7 +1,7 @@
 
-/* !
+/**!
  * matrix4
- * JavaScript 4d matrix library
+ * Matrix 4D library
  *
  * @copyright 2013 Enrico Marino
  * @license MIT
@@ -12,12 +12,6 @@
  */
 
 var matrix4 = exports;
-
-/**
- * Library version.
- */
-
-matrix4.version = '0.2.0';
 
 /**
  * Math functions.
