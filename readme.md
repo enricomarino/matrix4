@@ -1,6 +1,6 @@
 # matrix4
 
-Matrix 4D library
+Matrix 4D component
 
 ## Installation
 
