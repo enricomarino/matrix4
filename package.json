@@ -1,6 +1,6 @@
 {
   "name": "matrix4",
-  "description": "JavaScript 4d matrix library",
+  "description": "Matrix 4D component",
   "version": "0.2.0",
   "author": {
     "name": "Enrico Marino",
@@ -16,10 +16,10 @@
       "url": "http://federicospini.com"
     }
   ],
-  "homepage": "https://github.com/component-math/matrix4",
+  "homepage": "https://github.com/enricomarino/matrix4",
   "repository": {
     "type": "git",
-    "url": "git://github.com/component-math/matrix4.git"
+    "url": "git://github.com/enricomarino/matrix4.git"
   },
   "main": "index.js",
   "engines": {
