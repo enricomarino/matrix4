@@ -6,6 +6,21 @@ Matrix 4D component
 
     $ component install enricomarino/matrix4
 
+## API
+
+### matrix4.create(values:Float32Array):Float32Array
+
+Create a 4d matrix.
+
+### matrix4.copy(self:Float32Array, values:Float32Array)
+
+Copy `values` to `self` matrix.
+
+### matrix4.zero(self:Float32Array):Float32Array
+
+Set to zero all values of `self` matrix.
+
+
 ## License
 
 (The MIT License)
